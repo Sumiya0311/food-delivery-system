@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h3>WebSocket Test</h3>
+<button onclick="connect()">Connect</button>
+<pre id="out"></pre>
+<script>
+function connect() {
+  const ws = new WebSocket("ws://127.0.0.1:8000/ws/orders/8");
+  ws.onmessage = e => document.getElementById("out").textContent += e.data + "\n";
+  ws.onopen = () => document.getElementById("out").textContent += "Connected!\n";
+  ws.onerror = () => document.getElementById("out").textContent += "Error\n";
+}
+</script>
+</body>
+</html>
